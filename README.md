@@ -122,3 +122,110 @@ Kesimpulan
 
 Link Repository :
 https://github.com/username/Lab7Web
+
+
+
+# Laporan Praktikum Web 2 – CodeIgniter 4 (CRUD Artikel)
+
+## Deskripsi Praktikum
+
+Pada praktikum ini dilakukan pembuatan aplikasi web sederhana menggunakan framework **CodeIgniter 4** dengan fitur **CRUD (Create, Read, Update, Delete)** pada data artikel.
+
+## Langkah-Langkah Praktikum
+
+### 1. Membuat Database
+
+Membuat database dengan nama `lab_ci4` dan tabel `artikel` dengan field:
+
+* id
+* judul
+* isi
+* slug
+* status
+
+---
+
+### 2. Membuat Model
+
+File: `ArtikelModel.php`
+
+Digunakan untuk mengelola data artikel dari database.
+
+---
+
+### 3. Membuat Controller
+
+File: `Artikel.php`
+
+Controller berisi beberapa method:
+
+* `index()` → menampilkan daftar artikel
+* `view()` → menampilkan detail artikel
+* `admin_index()` → halaman admin
+* `add()` → tambah artikel
+* `edit()` → edit artikel
+* `delete()` → hapus artikel
+
+---
+
+### 4. Membuat View
+
+# Halaman utama
+Menampilkan daftar artikel
+
+# Halaman detail
+Menampilkan isi artikel berdasarkan slug
+
+# Halaman admin
+Menampilkan data artikel dalam bentuk tabel
+
+# Form tambah
+Digunakan untuk input artikel baru
+
+# Form edit
+Digunakan untuk mengubah data artikel
+
+### 5. Routing
+
+Menambahkan routing di `Routes.php`:
+
+```php
+$routes->get('/artikel', 'Artikel::index');
+$routes->get('/artikel/(:segment)', 'Artikel::view/$1');
+
+$routes->get('/admin/artikel', 'Artikel::admin_index');
+$routes->add('/admin/artikel/add', 'Artikel::add');
+$routes->add('/admin/artikel/edit/(:num)', 'Artikel::edit/$1');
+$routes->get('/admin/artikel/delete/(:num)', 'Artikel::delete/$1');
+```
+
+---
+
+## Implementasi CRUD
+
+###  Create (Tambah Data)
+Menambahkan artikel melalui form `form_add.php`
+
+###  Read (Tampil Data)
+Menampilkan artikel di:
+
+* halaman utama
+* halaman admin
+
+###  Update (Edit Data)
+Mengubah data artikel melalui `form_edit.php`
+
+###  Delete (Hapus Data)
+Menghapus artikel dari database
+
+##***  Tampilan
+
+Aplikasi menggunakan file CSS (`style.css`) yang disimpan di folder `public` untuk memperindah tampilan.
+
+##  Kesimpulan
+
+Pada praktikum ini berhasil dibuat aplikasi CRUD sederhana menggunakan CodeIgniter 4.
+Mahasiswa memahami konsep MVC (Model, View, Controller) serta routing dan integrasi database.
+
+
+
