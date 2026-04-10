@@ -314,6 +314,117 @@ app/Views/components/artikel_terkini.php
 <?php endforeach; ?>
 </ul>
 
+# Praktikum 4 – Authentication (Login System)
+Konfigurasi Awal
+1. Setup Database
+
+Membuat database:
+
+CREATE DATABASE lab_ci4;
+2. Membuat Tabel User
+CREATE TABLE user (
+    id INT(11) AUTO_INCREMENT,
+    username VARCHAR(200),
+    useremail VARCHAR(200),
+    userpassword VARCHAR(255),
+    PRIMARY KEY(id)
+);
+3. Insert User (dengan password hash)
+echo password_hash('admin123', PASSWORD_DEFAULT);
+
+Contoh hasil:
+
+$2y$10$xxxxxxxxxxxxxxxxxxxxxxxx
+
+Lalu insert ke database:
+
+INSERT INTO user (username, useremail, userpassword)
+VALUES ('admin', 'admin@email.com', 'HASIL_HASH');
+
+Controller Login
+
+File: app/Controllers/User.php
+
+<?php
+
+namespace App\Controllers;
+
+use App\Models\UserModel;
+
+class User extends BaseController
+{
+    public function login()
+    {
+        helper(['form']);
+
+        if ($this->request->getMethod() == 'post') {
+
+            $email = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
+
+            $session = session();
+            $model = new UserModel();
+
+            $login = $model->where('useremail', $email)->first();
+
+            if ($login) {
+                if (password_verify($password, $login['userpassword'])) {
+
+                    $session->set([
+                        'user_id' => $login['id'],
+                        'user_name' => $login['username'],
+                        'user_email' => $login['useremail'],
+                        'logged_in' => true
+                    ]);
+
+                    return redirect()->to('/admin/artikel');
+
+                } else {
+                    $session->setFlashdata("flash_msg", "Password salah.");
+                }
+            } else {
+                $session->setFlashdata("flash_msg", "Email tidak terdaftar.");
+            }
+        }
+
+        return view('user/login');
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/user/login');
+    }
+}
+ View Login
+
+File: app/Views/user/login.php
+
+<h2>Login</h2>
+
+<?php if(session()->getFlashdata('flash_msg')): ?>
+    <p style="color:red"><?= session()->getFlashdata('flash_msg') ?></p>
+<?php endif; ?>
+
+<form method="post">
+    <p>Email:</p>
+    <input type="email" name="email">
+
+    <p>Password:</p>
+    <input type="password" name="password">
+
+    <br><br>
+    <button type="submit">Login</button>
+</form>
+ Routing
+
+File: app/Config/Routes.php
+
+$routes->get('/user/login', 'User::login');
+$routes->post('/user/login', 'User::login');
+$routes->get('/user/logout', 'User::logout');
+
+
 
 
 
