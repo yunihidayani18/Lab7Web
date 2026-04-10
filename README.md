@@ -227,5 +227,93 @@ Aplikasi menggunakan file CSS (`style.css`) yang disimpan di folder `public` unt
 Pada praktikum ini berhasil dibuat aplikasi CRUD sederhana menggunakan CodeIgniter 4.
 Mahasiswa memahami konsep MVC (Model, View, Controller) serta routing dan integrasi database.
 
+#  Praktikum 3 - View Layout & View Cell (CodeIgniter 4)
+
+JAWABAN DARI PERTANYAAN DAN TUGAS 
+1. Manfaat View Layout Dalam Pengembangan Aplikasi :
+*Menghindari pengulangan kode
+*Tampilan jadi konsisten
+*Lebih rapi & mudah maintenance
+2. Perbedaan View Cell dan View Biasa
+   View Cell : Komponen reusable, Dipanggil dari view, Modular & bisa dipakai ulang. Sedangkan
+   View Biasa : Tampilan biasa, Dipanggil controller, Dipanggil controller
+3. Improvisasi
+Filter kategori:
+$model->where('kategori', 'teknologi')->findAll();
+
+Struktur yang Digunakan
+1. Layout Utama
+File:
+app/Views/layout/main.php
+
+Digunakan sebagai template utama yang berisi:
+-Header
+-Navbar
+-Content (renderSection)
+-Sidebar
+-Footer
+
+2. Menggunakan Section
+Contoh pada view:
+<?= $this->extend('layout/main') ?>
+
+<?= $this->section('content') ?>
+<h1><?= $title; ?></h1>
+<p><?= $content; ?></p>
+<?= $this->endSection() ?>
+
+3. Menambahkan Sidebar (View Cell)
+Pada file layout/main.php:
+
+<section style="display:flex; gap:20px;">
+    <div style="flex:3;">
+        <?= $this->renderSection('content') ?>
+    </div>
+
+    <aside id="sidebar" style="flex:1;">
+        <?= view_cell('App\\Cells\\ArtikelTerkini::render') ?>
+    </aside>
+</section>
+
+4. Membuat View Cell
+File:
+
+app/Cells/ArtikelTerkini.php
+<?php
+
+namespace App\Cells;
+
+use CodeIgniter\View\Cells\Cell;
+use App\Models\ArtikelModel;
+
+class ArtikelTerkini extends Cell
+{
+    public function render(): string
+    {
+        $model = new ArtikelModel();
+        $artikel = $model->orderBy('id', 'DESC')->findAll(5);
+
+        return view('components/artikel_terkini', [
+            'artikel' => $artikel
+        ]);
+    }
+}
+
+5. View untuk Sidebar
+File:
+
+app/Views/components/artikel_terkini.php
+<h3>Artikel Terkini</h3>
+<ul>
+<?php foreach ($artikel as $row): ?>
+    <li>
+        <a href="<?= base_url('/artikel/' . $row['slug']); ?>">
+            <?= $row['judul']; ?>
+        </a>
+    </li>
+<?php endforeach; ?>
+</ul>
+
+
 
 
