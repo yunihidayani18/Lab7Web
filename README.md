@@ -1,8 +1,8 @@
-Praktikum 1 - PHP Framework CodeIgniter 4
-
 * Nama: Yuni Hidayani
 * NIM: 311910078
 * Kelas: 1243B
+
+Praktikum 1 - PHP Framework CodeIgniter 4
 
 Instalasi CodeIgniter 4
 
