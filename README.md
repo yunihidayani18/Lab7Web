@@ -527,12 +527,12 @@ Form tambah dan edit artikel berhasil menggunakan dropdown kategori.
 Pada praktikum ini berhasil diterapkan relasi tabel menggunakan foreign key dan Query Builder JOIN pada CodeIgniter 4. Dengan adanya relasi tersebut, data artikel dan kategori dapat saling terhubung sehingga pengelolaan data menjadi lebih terstruktur dan efisien.
 
 # Praktikum 7 — Upload File Gambar
-# Deskripsi Praktikum
+### Deskripsi Praktikum
 Pada praktikum ini dilakukan implementasi upload file gambar pada aplikasi portal berita menggunakan framework CodeIgniter 4. Fitur upload digunakan untuk menambahkan gambar pada setiap artikel yang dibuat sehingga tampilan artikel menjadi lebih menarik dan informatif.
-# Tujuan
+### Tujuan
 1. Mahasiswa mampu memahami konsep dasar File Upload.
 2. Mahasaswa mampu membuat File Upload menggunakan Framework Codeigniter 4.
-# Langkah Praktikum
+### Langkah Praktikum
 1. Menambahkan Kolom Gambar pada Database
 Menambahkan kolom gambar pada tabel artikel untuk menyimpan nama file gambar.
 Query SQL:
@@ -563,7 +563,7 @@ Membuat folder:
 public/gambar
 Folder ini digunakan untuk menyimpan file gambar yang diupload.
 
-# Hasil Praktikum
+### Hasil Praktikum
 Hasil dari praktikum ini yaitu:
 Form upload gambar berhasil ditambahkan.
 File gambar berhasil diupload ke folder public/gambar.
