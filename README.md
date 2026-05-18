@@ -526,7 +526,52 @@ Form tambah dan edit artikel berhasil menggunakan dropdown kategori.
 ### Kesimpulan
 Pada praktikum ini berhasil diterapkan relasi tabel menggunakan foreign key dan Query Builder JOIN pada CodeIgniter 4. Dengan adanya relasi tersebut, data artikel dan kategori dapat saling terhubung sehingga pengelolaan data menjadi lebih terstruktur dan efisien.
 
+# Praktikum 7 — Upload File Gambar
+# Deskripsi Praktikum
+Pada praktikum ini dilakukan implementasi upload file gambar pada aplikasi portal berita menggunakan framework CodeIgniter 4. Fitur upload digunakan untuk menambahkan gambar pada setiap artikel yang dibuat sehingga tampilan artikel menjadi lebih menarik dan informatif.
+# Tujuan
+1. Mahasiswa mampu memahami konsep dasar File Upload.
+2. Mahasaswa mampu membuat File Upload menggunakan Framework Codeigniter 4.
+# Langkah Praktikum
+1. Menambahkan Kolom Gambar pada Database
+Menambahkan kolom gambar pada tabel artikel untuk menyimpan nama file gambar.
+Query SQL:
+ALTER TABLE artikel
+ADD gambar VARCHAR(255);
 
+2. Modifikasi Controller Artikel
+Melakukan perubahan pada method add() di Artikel.php untuk menangani proses upload gambar.
+Kode upload file:
+$file = $this->request->getFile('gambar');
+$file->move(ROOTPATH . 'public/gambar');
+
+Kode penyimpanan nama file:
+'gambar' => $file->getName(),
+
+3. Modifikasi Form Tambah Artikel
+Menambahkan atribut enctype pada tag form agar dapat mengirim file upload.
+<form action="" method="post" enctype="multipart/form-data">
+   
+4. Menambahkan Input File
+Menambahkan field input file pada form tambah artikel.
+<p>
+    <input type="file" name="gambar">
+</p>
+
+5. Membuat Folder Upload
+Membuat folder:
+public/gambar
+Folder ini digunakan untuk menyimpan file gambar yang diupload.
+
+# Hasil Praktikum
+Hasil dari praktikum ini yaitu:
+Form upload gambar berhasil ditambahkan.
+File gambar berhasil diupload ke folder public/gambar.
+Nama file gambar berhasil disimpan ke database.
+Artikel dapat memiliki gambar sesuai upload pengguna.
+
+# Kesimpulan
+Pada praktikum ini berhasil diterapkan fitur upload file gambar menggunakan CodeIgniter 4. Dengan adanya fitur upload gambar, artikel menjadi lebih menarik dan pengelolaan media pada website dapat dilakukan dengan lebih baik.
 
 
 
