@@ -424,6 +424,42 @@ $routes->get('/user/login', 'User::login');
 $routes->post('/user/login', 'User::login');
 $routes->get('/user/logout', 'User::logout');
 
+### Praktikum 5 - Pagination dan Pencarian
+Tujuan
+1. Mahasiswa mampu memahami konsep dasar Pagination.
+2. Mahasiswa mampu memahami konsep dasar Pencarian.
+3. Mahasaswa mampu membuat Paging dan Pencarian menggunakan Framework
+Codeigniter 4.
+
+Pada praktikum ini dilakukan pengembangan fitur pagination dan pencarian data pada aplikasi portal berita menggunakan framework CodeIgniter 4. Fitur pagination digunakan untuk membatasi jumlah data yang ditampilkan pada setiap halaman, sedangkan fitur pencarian digunakan untuk mempermudah pengguna dalam mencari artikel berdasarkan kata kunci tertentu.
+
+Langkah Praktikum
+1. Membuat Pagination
+Pagination digunakan agar data artikel tidak tampil sekaligus dalam satu halaman. Pada praktikum ini digunakan method:
+$model->paginate(10);
+Artinya setiap halaman menampilkan maksimal 10 data artikel.
+2. Menambahkan Pager
+Untuk menampilkan navigasi halaman digunakan:
+<?= $pager->links(); ?>
+Dengan fitur ini pengguna dapat berpindah halaman data artikel.
+3. Membuat Form Pencarian
+Pada halaman admin artikel ditambahkan form pencarian menggunakan input keyword.
+Contoh form pencarian:
+
+<form method="get">
+    <input type="text" name="q">
+    <input type="submit" value="Cari">
+</form>
+
+4. Menambahkan Query Pencarian
+Pencarian dilakukan menggunakan Query Builder CodeIgniter 4 dengan method like().
+$model->like('judul', $q)->paginate(10);
+Query tersebut digunakan untuk mencari artikel berdasarkan judul.
+
+Kesimpulan :
+Pada praktikum ini berhasil diterapkan fitur pagination dan pencarian data menggunakan CodeIgniter 4. Dengan adanya pagination, tampilan data menjadi lebih terstruktur dan ringan. Sedangkan fitur pencarian membantu pengguna menemukan artikel dengan lebih cepat dan efisien.
+
+
 
 
 
