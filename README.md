@@ -570,7 +570,7 @@ File gambar berhasil diupload ke folder public/gambar.
 Nama file gambar berhasil disimpan ke database.
 Artikel dapat memiliki gambar sesuai upload pengguna.
 
-# Kesimpulan
+### Kesimpulan
 Pada praktikum ini berhasil diterapkan fitur upload file gambar menggunakan CodeIgniter 4. Dengan adanya fitur upload gambar, artikel menjadi lebih menarik dan pengelolaan media pada website dapat dilakukan dengan lebih baik.
 
 
