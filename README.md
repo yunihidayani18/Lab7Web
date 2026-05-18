@@ -460,19 +460,19 @@ Query tersebut digunakan untuk mencari artikel berdasarkan judul.
 Kesimpulan :
 Pada praktikum ini berhasil diterapkan fitur pagination dan pencarian data menggunakan CodeIgniter 4. Dengan adanya pagination, tampilan data menjadi lebih terstruktur dan ringan. Sedangkan fitur pencarian membantu pengguna menemukan artikel dengan lebih cepat dan efisien.
 
-### Praktikum 6: Relasi Tabel dan Query Builder
+# Praktikum 6: Relasi Tabel dan Query Builder
 
-# Deskripsi Praktikum
+### Deskripsi Praktikum
 Praktikum ini membahas implementasi relasi tabel pada framework CodeIgniter 4 menggunakan Query Builder JOIN. Pada praktikum ini dilakukan pembuatan tabel kategori yang dihubungkan dengan tabel artikel menggunakan foreign key, kemudian data relasi ditampilkan pada halaman admin maupun halaman artikel.
 
-# Tujuan Praktikum
+### Tujuan Praktikum
 *Memahami konsep relasi tabel pada database.
 *Mengimplementasikan foreign key pada MySQL.
 *Menggunakan Query Builder JOIN pada CodeIgniter 4.
 *Menampilkan data relasi pada halaman web.
 *Membuat form tambah dan edit artikel dengan dropdown kategori.
 
-# Langkah Praktikum
+### Langkah Praktikum
 1. Membuat Tabel Kategori
 Membuat tabel kategori pada database lab_ci4.
 
@@ -516,14 +516,14 @@ Kategori: Teknologi
 6. Menambahkan Dropdown Kategori
 Pada form tambah dan edit artikel ditambahkan dropdown kategori agar pengguna dapat memilih kategori artikel secara langsung.
 
-# Hasil Praktikum
+### Hasil Praktikum
 Hasil praktikum menunjukkan bahwa:
 Relasi tabel berhasil dibuat.
 Query JOIN berhasil dijalankan.
 Data kategori dapat ditampilkan pada halaman admin dan halaman artikel.
 Form tambah dan edit artikel berhasil menggunakan dropdown kategori.
 
-# Kesimpulan
+### Kesimpulan
 Pada praktikum ini berhasil diterapkan relasi tabel menggunakan foreign key dan Query Builder JOIN pada CodeIgniter 4. Dengan adanya relasi tersebut, data artikel dan kategori dapat saling terhubung sehingga pengelolaan data menjadi lebih terstruktur dan efisien.
 
 
