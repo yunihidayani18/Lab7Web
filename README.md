@@ -442,6 +442,7 @@ Artinya setiap halaman menampilkan maksimal 10 data artikel.
 Untuk menampilkan navigasi halaman digunakan:
 <?= $pager->links(); ?>
 Dengan fitur ini pengguna dapat berpindah halaman data artikel.
+
 3. Membuat Form Pencarian
 Pada halaman admin artikel ditambahkan form pencarian menggunakan input keyword.
 Contoh form pencarian:
@@ -459,6 +460,71 @@ Query tersebut digunakan untuk mencari artikel berdasarkan judul.
 Kesimpulan :
 Pada praktikum ini berhasil diterapkan fitur pagination dan pencarian data menggunakan CodeIgniter 4. Dengan adanya pagination, tampilan data menjadi lebih terstruktur dan ringan. Sedangkan fitur pencarian membantu pengguna menemukan artikel dengan lebih cepat dan efisien.
 
+### Praktikum 6: Relasi Tabel dan Query Builder
+
+# Deskripsi Praktikum
+Praktikum ini membahas implementasi relasi tabel pada framework CodeIgniter 4 menggunakan Query Builder JOIN. Pada praktikum ini dilakukan pembuatan tabel kategori yang dihubungkan dengan tabel artikel menggunakan foreign key, kemudian data relasi ditampilkan pada halaman admin maupun halaman artikel.
+
+# Tujuan Praktikum
+*Memahami konsep relasi tabel pada database.
+*Mengimplementasikan foreign key pada MySQL.
+*Menggunakan Query Builder JOIN pada CodeIgniter 4.
+*Menampilkan data relasi pada halaman web.
+*Membuat form tambah dan edit artikel dengan dropdown kategori.
+
+# Langkah Praktikum
+1. Membuat Tabel Kategori
+Membuat tabel kategori pada database lab_ci4.
+
+Struktur tabel:
+id_kategori
+nama_kategori
+slug_kategori
+
+Query SQL:
+CREATE TABLE kategori (
+    id_kategori INT(11) AUTO_INCREMENT,
+    nama_kategori VARCHAR(100) NOT NULL,
+    slug_kategori VARCHAR(100),
+    PRIMARY KEY (id_kategori)
+);
+
+2. Menambahkan Foreign Key
+Menambahkan kolom id_kategori pada tabel artikel dan menghubungkannya dengan tabel kategori.
+
+3. Modifikasi Model
+Menambahkan method JOIN pada ArtikelModel.php.
+
+public function getArtikel()
+{
+    return $this->db->table('artikel')
+        ->select('artikel.*, kategori.nama_kategori')
+        ->join('kategori', 'kategori.id_kategori = artikel.id_kategori')
+        ->get()
+        ->getResultArray();
+}
+
+4. Modifikasi Controller
+Mengubah controller agar menggunakan method getArtikel() sehingga data kategori ikut ditampilkan.
+
+5. Modifikasi View
+Menambahkan kolom kategori pada halaman admin dan halaman artikel.
+Contoh tampilan:
+Artikel Pertama
+Kategori: Teknologi
+
+6. Menambahkan Dropdown Kategori
+Pada form tambah dan edit artikel ditambahkan dropdown kategori agar pengguna dapat memilih kategori artikel secara langsung.
+
+# Hasil Praktikum
+Hasil praktikum menunjukkan bahwa:
+Relasi tabel berhasil dibuat.
+Query JOIN berhasil dijalankan.
+Data kategori dapat ditampilkan pada halaman admin dan halaman artikel.
+Form tambah dan edit artikel berhasil menggunakan dropdown kategori.
+
+# Kesimpulan
+Pada praktikum ini berhasil diterapkan relasi tabel menggunakan foreign key dan Query Builder JOIN pada CodeIgniter 4. Dengan adanya relasi tersebut, data artikel dan kategori dapat saling terhubung sehingga pengelolaan data menjadi lebih terstruktur dan efisien.
 
 
 
