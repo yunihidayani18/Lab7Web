@@ -573,5 +573,74 @@ Artikel dapat memiliki gambar sesuai upload pengguna.
 ### Kesimpulan
 Pada praktikum ini berhasil diterapkan fitur upload file gambar menggunakan CodeIgniter 4. Dengan adanya fitur upload gambar, artikel menjadi lebih menarik dan pengelolaan media pada website dapat dilakukan dengan lebih baik.
 
+# Praktikum 8: AJAX
+### Deskripsi Praktikum
+Pada praktikum ini dilakukan implementasi AJAX pada aplikasi portal berita menggunakan framework CodeIgniter 4 dan jQuery. AJAX digunakan untuk mengambil data artikel dari server tanpa melakukan reload halaman sehingga proses menampilkan data menjadi lebih cepat dan interaktif.
+
+### Tujuan
+1. Memahami konsep AJAX dan cara kerjanya.
+2. Mampu mengimplementasikan AJAX pada aplikasi web dengan CodeIgniter 4.
+3. Melatih kemampuan problem solving dan debugging.
+
+### Langkah Praktikum
+1. Menyiapkan jQuery
+Membuat folder:
+public/assets/js
+Kemudian menambahkan file:
+jquery-4.0.0.min.js
+File jQuery digunakan untuk menjalankan AJAX pada halaman web.
+2. Membuat AjaxController
+Membuat file controller:
+app/Controllers/AjaxController.php
+Controller digunakan untuk menampilkan halaman AJAX dan mengirim data artikel dalam format JSON.
+Contoh method:
+public function getData()
+{
+    $model = new ArtikelModel();
+
+    $data = $model->findAll();
+
+    return $this->response->setJSON($data);
+}
+3. Menambahkan Route AJAX
+Menambahkan route pada file:
+app/Config/Routes.php
+Kode route:
+$routes->get('/ajax', 'AjaxController::index');
+$routes->get('/ajax/getData', 'AjaxController::getData');
+4. Membuat View AJAX
+Membuat file view:
+app/Views/ajax/index.php
+View digunakan untuk menampilkan tabel artikel yang datanya diambil menggunakan AJAX.
+5. Membuat AJAX Request
+Menggunakan jQuery AJAX untuk mengambil data artikel dari server.
+Contoh kode:
+$.ajax({
+
+    url: "<?= base_url('ajax/getData') ?>",
+
+    method: "GET",
+
+    dataType: "json",
+
+    success: function(data) {
+
+        console.log(data);
+    }
+
+});
+6. Menampilkan Data ke Tabel
+Data JSON yang diterima kemudian ditampilkan ke dalam tabel HTML menggunakan JavaScript dan jQuery.
+
+### Hasil Praktikum
+Hasil dari praktikum ini yaitu:
+* Data artikel berhasil diambil menggunakan AJAX.
+* Data ditampilkan tanpa reload halaman.
+* JSON response berhasil diproses menggunakan jQuery.
+* Halaman menjadi lebih interaktif dan dinamis.
+
+### Kesimpulan
+Pada praktikum ini berhasil diterapkan AJAX menggunakan jQuery dan CodeIgniter 4. Dengan AJAX, proses pengambilan data dapat dilakukan tanpa reload halaman sehingga aplikasi menjadi lebih cepat dan responsif.
+
 
 
