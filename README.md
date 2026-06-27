@@ -1056,8 +1056,7 @@ Pada praktikum ini berhasil dibuat aplikasi frontend menggunakan VueJS yang terh
 Praktikum ini berhasil mengimplementasikan framework VueJS sebagai frontend yang terintegrasi dengan REST API CodeIgniter 4 menggunakan Axios. Dengan VueJS, proses CRUD dapat dilakukan secara dinamis tanpa melakukan reload halaman sehingga aplikasi menjadi lebih interaktif dan responsif.
 
 
-# Praktikum	12:	VueJS	Komponen	dan	Routing	(Single	Page	
-Application)
+# Praktikum	12:	VueJS	Komponen	dan	Routing	(Single	Page Application)
 
 # Deskripsi Praktikum
 Pada praktikum ini dilakukan pengembangan aplikasi VueJS menjadi Single Page Application (SPA) menggunakan Vue Router. Dengan konsep SPA, perpindahan halaman dapat dilakukan tanpa me-reload browser sehingga aplikasi menjadi lebih cepat dan interaktif.
@@ -1163,8 +1162,7 @@ Pada praktikum ini berhasil dibuat aplikasi Single Page Application (SPA) menggu
 Pada praktikum ini berhasil diterapkan konsep Single Page Application (SPA) menggunakan VueJS dan Vue Router. Dengan menggunakan router, proses perpindahan halaman menjadi lebih cepat karena browser tidak perlu melakukan reload halaman. Selain itu, aplikasi menjadi lebih interaktif dan mudah dikembangkan dengan pendekatan component-based architecture.
 
 
-# Praktikum	13:	VueJS	Autentikasi	dan	Navigation	Guards	(SPA	
-Security)
+# Praktikum	13:	VueJS	Autentikasi	dan	Navigation	Guards	(SPA Security)
 
 ## Deskripsi Praktikum
 
