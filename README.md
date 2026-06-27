@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 
 * Nama  : YUNI HIDAYANI
 * NIM   : 311910078
 * Kelas : 1243B/B311FT-FH
+=======
+* Nama: Yuni Hidayani
+* NIM: 311910078
+* Kelas: 1243B
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
 
 Praktikum 1 - PHP Framework CodeIgniter 4
 
@@ -425,7 +431,11 @@ $routes->get('/user/login', 'User::login');
 $routes->post('/user/login', 'User::login');
 $routes->get('/user/logout', 'User::logout');
 
+<<<<<<< HEAD
 # Praktikum 5 – Pagination dan Pencarian
+=======
+### Praktikum 5 - Pagination dan Pencarian
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
 Tujuan
 1. Mahasiswa mampu memahami konsep dasar Pagination.
 2. Mahasiswa mampu memahami konsep dasar Pencarian.
@@ -439,13 +449,17 @@ Langkah Praktikum
 Pagination digunakan agar data artikel tidak tampil sekaligus dalam satu halaman. Pada praktikum ini digunakan method:
 $model->paginate(10);
 Artinya setiap halaman menampilkan maksimal 10 data artikel.
+<<<<<<< HEAD
 ![Membuat Pagination](Screenshots-praktikum-5/code1.png)
 
+=======
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
 2. Menambahkan Pager
 Untuk menampilkan navigasi halaman digunakan:
 <?= $pager->links(); ?>
 Dengan fitur ini pengguna dapat berpindah halaman data artikel.
 
+<<<<<<< HEAD
 Berikut hasilnya :
 ![Pagination](Screenshots-praktikum-5/praktikum5.png)
 
@@ -453,15 +467,28 @@ Berikut hasilnya :
 Pada halaman admin artikel ditambahkan form pencarian menggunakan input keyword.
 Form pencarian:
 ![Membuat Pencarian](Screenshots-praktikum-5/code2.png)
+=======
+3. Membuat Form Pencarian
+Pada halaman admin artikel ditambahkan form pencarian menggunakan input keyword.
+Contoh form pencarian:
+
+<form method="get">
+    <input type="text" name="q">
+    <input type="submit" value="Cari">
+</form>
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
 
 4. Menambahkan Query Pencarian
 Pencarian dilakukan menggunakan Query Builder CodeIgniter 4 dengan method like().
 $model->like('judul', $q)->paginate(10);
 Query tersebut digunakan untuk mencari artikel berdasarkan judul.
 
+<<<<<<< HEAD
 Berikut hasilnya :
 ![Pencarian](Screenshots-praktikum-5/tambah-pencarian.png)
 
+=======
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
 Kesimpulan :
 Pada praktikum ini berhasil diterapkan fitur pagination dan pencarian data menggunakan CodeIgniter 4. Dengan adanya pagination, tampilan data menjadi lebih terstruktur dan ringan. Sedangkan fitur pencarian membantu pengguna menemukan artikel dengan lebih cepat dan efisien.
 
@@ -494,6 +521,7 @@ CREATE TABLE kategori (
     PRIMARY KEY (id_kategori)
 );
 
+<<<<<<< HEAD
 ![Tabel kategori](Screenshots-praktikum-6/membuat-kategori.png)
 
 
@@ -506,20 +534,42 @@ Menambahkan kolom id_kategori pada tabel artikel dan menghubungkannya dengan tab
 Menambahkan method JOIN pada ArtikelModel.php.
 
 ![Modifikasi Model](Screenshots-praktikum-6/Modifikasi-model-artikel.png)
+=======
+2. Menambahkan Foreign Key
+Menambahkan kolom id_kategori pada tabel artikel dan menghubungkannya dengan tabel kategori.
+
+3. Modifikasi Model
+Menambahkan method JOIN pada ArtikelModel.php.
+
+public function getArtikel()
+{
+    return $this->db->table('artikel')
+        ->select('artikel.*, kategori.nama_kategori')
+        ->join('kategori', 'kategori.id_kategori = artikel.id_kategori')
+        ->get()
+        ->getResultArray();
+}
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
 
 4. Modifikasi Controller
 Mengubah controller agar menggunakan method getArtikel() sehingga data kategori ikut ditampilkan.
 
+<<<<<<< HEAD
 ![Modifikasi Controller](Screenshots-praktikum-6/Modifikasi-Modifikasi-controller-artikel.png)
 
+=======
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
 5. Modifikasi View
 Menambahkan kolom kategori pada halaman admin dan halaman artikel.
 Contoh tampilan:
 Artikel Pertama
 Kategori: Teknologi
 
+<<<<<<< HEAD
 ![Modifikasi View](Screenshots-praktikum-6/Modifikasi-Modifikasi-view.png)
 
+=======
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
 6. Menambahkan Dropdown Kategori
 Pada form tambah dan edit artikel ditambahkan dropdown kategori agar pengguna dapat memilih kategori artikel secara langsung.
 
@@ -530,10 +580,13 @@ Query JOIN berhasil dijalankan.
 Data kategori dapat ditampilkan pada halaman admin dan halaman artikel.
 Form tambah dan edit artikel berhasil menggunakan dropdown kategori.
 
+<<<<<<< HEAD
 Berikut gambarnya :
 ![Tabel Kategori](Screenshots-praktikum-6/Modifikasi-tabel-kategori.png)
 ![Kategori](Screenshots-praktikum-6/Modifikasi-kategori.png)
 
+=======
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
 ### Kesimpulan
 Pada praktikum ini berhasil diterapkan relasi tabel menggunakan foreign key dan Query Builder JOIN pada CodeIgniter 4. Dengan adanya relasi tersebut, data artikel dan kategori dapat saling terhubung sehingga pengelolaan data menjadi lebih terstruktur dan efisien.
 
@@ -558,8 +611,17 @@ $file->move(ROOTPATH . 'public/gambar');
 
 Kode penyimpanan nama file:
 'gambar' => $file->getName(),
+<<<<<<< HEAD
    
 3. Menambahkan Input File
+=======
+
+3. Modifikasi Form Tambah Artikel
+Menambahkan atribut enctype pada tag form agar dapat mengirim file upload.
+<form action="" method="post" enctype="multipart/form-data">
+   
+4. Menambahkan Input File
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
 Menambahkan field input file pada form tambah artikel.
 <p>
     <input type="file" name="gambar">
@@ -577,8 +639,11 @@ File gambar berhasil diupload ke folder public/gambar.
 Nama file gambar berhasil disimpan ke database.
 Artikel dapat memiliki gambar sesuai upload pengguna.
 
+<<<<<<< HEAD
 ![Upload Gambar Berhasil](Screenshots-praktikum-7/Modifikasi-berhasil.png)
 
+=======
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
 ### Kesimpulan
 Pada praktikum ini berhasil diterapkan fitur upload file gambar menggunakan CodeIgniter 4. Dengan adanya fitur upload gambar, artikel menjadi lebih menarik dan pengelolaan media pada website dapat dilakukan dengan lebih baik.
 
@@ -621,11 +686,14 @@ $routes->get('/ajax/getData', 'AjaxController::getData');
 Membuat file view:
 app/Views/ajax/index.php
 View digunakan untuk menampilkan tabel artikel yang datanya diambil menggunakan AJAX.
+<<<<<<< HEAD
 
 ![View Ajax](Screenshots-praktikum-8/view-index1.png)
 ![View Ajax](Screenshots-praktikum-8/view-index2.png)
 ![View Ajax](Screenshots-praktikum-8/view-index3.png)
 
+=======
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
 5. Membuat AJAX Request
 Menggunakan jQuery AJAX untuk mengambil data artikel dari server.
 Contoh kode:
@@ -653,13 +721,19 @@ Hasil dari praktikum ini yaitu:
 * JSON response berhasil diproses menggunakan jQuery.
 * Halaman menjadi lebih interaktif dan dinamis.
 
+<<<<<<< HEAD
 Berikut tampilannya :
 
 ![Ajax](Screenshots-praktikum-8/BERHASIL.png)
 
+=======
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
 ### Kesimpulan
 Pada praktikum ini berhasil diterapkan AJAX menggunakan jQuery dan CodeIgniter 4. Dengan AJAX, proses pengambilan data dapat dilakukan tanpa reload halaman sehingga aplikasi menjadi lebih cepat dan responsif.
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 036aad151cce3749c574730a9d9123391879b838
