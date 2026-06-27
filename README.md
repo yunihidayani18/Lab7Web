@@ -745,7 +745,7 @@ Perpindahan halaman data artikel dilakukan secara asynchronous sehingga halaman 
 ### 2. Modifikasi Controller Artikel
 Method `admin_index()` dimodifikasi agar dapat mengembalikan data dalam format JSON ketika request berasal dari AJAX.
 
-![Modifikasi Artikel](Screenshots-praktikum-9/modifcontrollartikel.png)
+![Modifikasi Controller](Screenshoots-praktikum-9/modifcontrollartikel.png)
 
 ### 3. Modifikasi View
 View `admin_index.php` diubah dengan menambahkan:
@@ -1161,3 +1161,108 @@ Pada praktikum ini berhasil dibuat aplikasi Single Page Application (SPA) menggu
 ## Kesimpulan
 
 Pada praktikum ini berhasil diterapkan konsep Single Page Application (SPA) menggunakan VueJS dan Vue Router. Dengan menggunakan router, proses perpindahan halaman menjadi lebih cepat karena browser tidak perlu melakukan reload halaman. Selain itu, aplikasi menjadi lebih interaktif dan mudah dikembangkan dengan pendekatan component-based architecture.
+
+
+# Praktikum	13:	VueJS	Autentikasi	dan	Navigation	Guards	(SPA	
+Security)
+
+## Deskripsi Praktikum
+
+Pada praktikum ini dilakukan implementasi fitur autentikasi (Login) dan proteksi halaman (Route Guard) pada aplikasi Single Page Application (SPA) menggunakan Vue.js dan Vue Router. Fitur login digunakan untuk membatasi akses pengguna terhadap halaman tertentu, seperti halaman Kelola Artikel dan About.
+
+## Tujuan Praktikum
+Memahami konsep autentikasi pada aplikasi SPA.
+Menerapkan Vue Router Navigation Guards.
+Menggunakan localStorage untuk menyimpan status login.
+Membuat halaman login dan logout.
+Melindungi halaman tertentu agar hanya dapat diakses oleh pengguna yang telah login.
+
+## Langkah-Langkah Praktikum
+1. Membuat Komponen Login
+
+Membuat file:
+
+![Komponen Login](Screenshoots-praktikum-13/loginjs.png)
+
+Komponen ini digunakan untuk menampilkan form login yang terdiri dari:
+Username / Email
+Password
+Tombol Masuk Aplikasi
+
+2. Menambahkan Route Login
+
+![Routr Login](Screenshoots-praktikum-13/routelogin.png)
+
+3. Menambahkan Route Guard
+
+Proteksi halaman Artikel dan About menggunakan:
+
+meta: {
+    requiresAuth: true
+}
+
+4. Membuat Navigation Guard
+router.beforeEach((to, from, next) => {
+
+    const isAuthenticated =
+        localStorage.getItem('isLoggedIn')
+        === 'true';
+
+    if (
+        to.matched.some(
+            record => record.meta.requiresAuth
+        )
+        && !isAuthenticated
+    ) {
+
+        alert(
+            'Akses Ditolak! Anda harus login terlebih dahulu.'
+        );
+
+        next('/login');
+    }
+    else {
+        next();
+    }
+
+});
+5. Menyimpan Status Login
+localStorage.setItem(
+    'isLoggedIn',
+    'true'
+);
+6. Logout
+localStorage.removeItem('isLoggedIn');
+localStorage.removeItem('userToken');
+
+## Hasil Pengujian
+### Sebelum Login
+- Halaman Kelola Artikel tidak dapat diakses.
+- Halaman About tidak dapat diakses.
+- Sistem menampilkan pesan:
+Akses Ditolak! Anda harus login terlebih dahulu.
+### Setelah Login
+- Pengguna dapat mengakses halaman Kelola Artikel.
+- Pengguna dapat mengakses halaman About.
+- Menu Logout ditampilkan.
+### Setelah Logout
+- Status login dihapus dari localStorage.
+- Pengguna tidak dapat mengakses halaman yang diproteksi.
+
+## Screenshot Praktikum
+### Halaman Login
+
+![Halaman Login](Screenshoots-praktikum-13/login.png)
+
+### Kondisi Terkunci
+
+![Skenario A](Screenshoots-praktikum-13/skenario-a.png)
+
+### Kondisi Login Terautentikasi
+
+![Skenario B](Screenshoots-praktikum-13/skenario-b-logout.png)
+
+## Kesimpulan
+
+Pada praktikum ini berhasil diterapkan sistem autentikasi sederhana pada aplikasi Single Page Application menggunakan Vue.js. Dengan memanfaatkan localStorage dan Vue Router Navigation Guards, halaman tertentu dapat dibatasi sehingga hanya dapat diakses oleh pengguna yang telah melakukan login. Fitur login dan logout juga berhasil diimplementasikan untuk mengelola sesi pengguna pada aplikasi.
+
