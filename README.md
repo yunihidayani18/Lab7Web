@@ -541,7 +541,7 @@ public function getArtikel()
 4. Modifikasi Controller
 Mengubah controller agar menggunakan method getArtikel() sehingga data kategori ikut ditampilkan.
 
-![Modifikasi Controller](Screenshots-praktikum-6/Modifikasi-Modifikasi-controller-artikel.png)
+![Modifikasi Controller](Screenshots-praktikum-6/Modifikasi-controller-artikel.png)
 
 
 5. Modifikasi View
@@ -564,8 +564,12 @@ Data kategori dapat ditampilkan pada halaman admin dan halaman artikel.
 Form tambah dan edit artikel berhasil menggunakan dropdown kategori.
 
 Berikut gambarnya :
-![Tabel Kategori](Screenshots-praktikum-6/Modifikasi-tabel-kategori.png)
-![Kategori](Screenshots-praktikum-6/Modifikasi-kategori.png)
+
+![Tabel Kategori](Screenshots-praktikum-6/tabel-kategori.png)
+
+dan
+
+![Kategori](Screenshots-praktikum-6/kategori.png)
 
 
 ### Kesimpulan
@@ -619,7 +623,7 @@ File gambar berhasil diupload ke folder public/gambar.
 Nama file gambar berhasil disimpan ke database.
 Artikel dapat memiliki gambar sesuai upload pengguna.
 
-![Upload Gambar Berhasil](Screenshots-praktikum-7/Modifikasi-berhasil.png)
+![Upload Gambar Berhasil](Screenshots-praktikum-7/berhasil.png)
 
 
 ### Kesimpulan
@@ -668,8 +672,10 @@ View digunakan untuk menampilkan tabel artikel yang datanya diambil menggunakan 
 
 
 ![View Ajax](Screenshots-praktikum-8/view-index1.png)
-![View Ajax](Screenshots-praktikum-8/view-index2.png)
-![View Ajax](Screenshots-praktikum-8/view-index3.png)
+
+![View Ajax](Screenshots-praktikum-8/viewindex2.png)
+
+![View Ajax](Screenshots-praktikum-8/viewindex3.png)
 
 
 5. Membuat AJAX Request
@@ -677,7 +683,7 @@ Menggunakan jQuery AJAX untuk mengambil data artikel dari server.
 Contoh kode:
 $.ajax({
 
-    url: "<?= base_url('ajax/getData') ?>",
+    url: "<?= base_url('ajax/getData') ?>",git add .
 
     method: "GET",
 
@@ -766,3 +772,392 @@ Pada praktikum ini berhasil diterapkan AJAX menggunakan jQuery dan CodeIgniter 4
 ## Kesimpulan
 
 Implementasi AJAX Pagination dan Search berhasil dilakukan menggunakan CodeIgniter 4 dan jQuery. Penggunaan AJAX mampu meningkatkan performa aplikasi serta mempermudah pengguna dalam melakukan pencarian dan perpindahan halaman data artikel secara dinamis.
+
+# Praktikum 10: API
+
+## Deskripsi Praktikum
+Pada praktikum ini dilakukan pembuatan REST API menggunakan Framework CodeIgniter 4. REST API digunakan sebagai perantara pertukaran data antara server dan client dengan format data JSON. Pada praktikum ini dibuat API untuk mengelola data artikel yang meliputi proses menampilkan, menambahkan, mengubah, dan menghapus data artikel.
+
+
+## Tujuan Praktikum
+
+1. Memahami konsep dasar API.
+2. Memahami konsep dasar RESTFull API.
+3. Membuat API menggunakan Framework CodeIgniter 4.
+
+
+## Tools yang Digunakan
+
+- PHP 8
+- CodeIgniter 4
+- MySQL
+- XAMPP
+- Visual Studio Code
+- Postman
+
+## Langkah Praktikum
+
+### 1. Persiapan
+- Membuka project `lab11_ci`.
+- Menjalankan Apache dan MySQL pada XAMPP.
+- Menggunakan database `lab_ci4`.
+- Mengunduh dan menginstal aplikasi Postman sebagai REST Client.
+
+### 2. Membuat REST Controller
+
+Membuat file `Post.php` pada folder:
+
+```text
+app/Controllers/Post.php
+```
+
+![Rest Contoller](Screenshoots-praktikum-10/restcontrollerphp1.png)
+
+![Rest Contollerpost](Screenshoots-praktikum-10/restcontrollerphp2.png)
+
+Controller ini berisi method:
+
+- `index()` → menampilkan seluruh data artikel.
+- `show()` → menampilkan data berdasarkan ID.
+- `create()` → menambahkan data baru.
+- `update()` → mengubah data artikel.
+- `delete()` → menghapus data artikel.
+
+
+### 3. Membuat Routing REST API
+
+![Rest Api](Screenshoots-praktikum-10/routingrestapi.png)
+
+Untuk melihat daftar route:
+
+```bash
+php spark routes
+```
+
+### 4. Pengujian REST API Menggunakan Postman
+
+#### Menampilkan Semua Data
+
+Pilih method GET dan masukkan URL berikut:
+http://localhost:8080/post
+Lalu, klik Send. Maka berhasil menampilkan semua data artikel dari database, dan pengujian
+berhasil.
+
+![Menampilkan Data](Screenshoots-praktikum-10/getpost1.png)
+
+#### Menampilkan Data Spesifik
+
+Masih menggunakan method GET, hanya perlu menambahkan ID artikel di belakang URL
+seperti ini:
+http://localhost:8080/post/3
+
+Selanjutnya, klik Send. Request tersebut akan menampilkan data artikel yang memiliki ID
+nomor 3 di database.
+
+![Data ID](Screenshoots-praktikum-10/Requestidno.3.png)
+
+#### Menambahkan Data
+
+Menggunakan method POST untuk menambahkan data baru ke database.
+Kemudian, masukkan URL berikut:
+http://localhost:8080/post
+Pilih tab Body, lalu pilih x-www-form-uriencoded. Masukkan atribut tabel pada kolom KEY
+dan nilai data baru di kolom VALUE. Jangan lupa, klik Send.
+
+![Menambahkan Data](Screenshoots-praktikum-10/berhasiltambahdata.png)
+
+#### Mengubah Data
+
+Untuk mengubah data, silakan ganti method menjadi PUT. Kemudian, masukkan URL artikel
+yang ingin diubah. Misalnya, ingin mengubah data artikel dengan ID nomor 3, maka masukkan
+URL berikut:
+http://localhost:8080/post/3
+Selanjutnya, pilih tab Body. Kemudian, pilih x-www-form-uriencoded. Masukkan nama
+atribut tabel pada kolom KEY dan nilai data yang baru pada kolom VALUE. Kalau sudah,
+klik Send.
+
+![Mengubah Data](Screenshoots-praktikum-10/berhasilubahdata.png)
+
+#### Menghapus Data
+
+Pilih method DELETE untuk menghapus data. Lalu, masukkan URL spesifik data mana yang
+ingin di hapus. Misalnya, ingin menghapus data nomor 16, maka URL-nya seperti ini:
+http://localhost:8080/post/16
+Langsung saja klik Send, maka akan mendapatkan pesan bahwa data telah berhasil dihapus dari
+database.
+
+![Mengubah Data](Screenshoots-praktikum-10/berhasilubahdata.png)
+
+## Hasil Praktikum
+
+Pada praktikum ini berhasil dibuat REST API menggunakan Framework CodeIgniter 4. API yang dibuat mampu melakukan operasi CRUD terhadap data artikel melalui HTTP Method GET, POST, PUT, dan DELETE. Seluruh data yang dikirim dan diterima menggunakan format JSON sehingga mudah diintegrasikan dengan aplikasi lain.
+
+
+## Kesimpulan
+
+Praktikum ini berhasil mengimplementasikan REST API pada CodeIgniter 4 dengan memanfaatkan `ResourceController`. Dengan adanya REST API, pertukaran data antara server dan client menjadi lebih mudah, cepat, dan dapat digunakan untuk integrasi dengan aplikasi frontend seperti VueJS.
+
+
+# Praktikum 11: VueJS
+
+## Deskripsi Praktikum
+Pada praktikum ini dilakukan implementasi framework VueJS 3 sebagai frontend yang terhubung dengan REST API CodeIgniter 4 yang telah dibuat pada praktikum sebelumnya. VueJS digunakan untuk menampilkan data artikel serta melakukan operasi CRUD (Create, Read, Update, Delete) secara dinamis menggunakan Axios.
+
+
+## Tujuan Praktikum
+
+1. Memahami konsep dasar API.
+2. Memahami konsep dasar Framework VueJS.
+3. Membuat frontend API menggunakan Framework VueJS 3.
+
+
+## Tools yang Digunakan
+
+- Visual Studio Code
+- VueJS 3 (CDN)
+- Axios (CDN)
+- CodeIgniter 4 REST API
+- XAMPP
+- Google Chrome
+
+## Langkah Praktikum
+
+### 1. Membuat Project VueJS
+
+Membuat folder:
+
+```text
+htdocs/lab8_vuejs
+```
+
+Kemudian membuat struktur folder:
+
+```text
+assets/css
+assets/js
+```
+
+---
+
+### 2. Menambahkan Library VueJS dan Axios
+
+```html
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+```
+
+---
+
+### 3. Menampilkan Data Artikel dari REST API
+
+Menentukan endpoint API:
+
+```javascript
+const apiUrl = 'http://localhost:8080';
+```
+
+Mengambil data artikel menggunakan Axios:
+
+```javascript
+axios.get(apiUrl + '/post')
+```
+
+Data artikel kemudian ditampilkan menggunakan:
+
+```html
+<tr v-for="(row,index) in artikel">
+```
+
+---
+
+### 4. Membuat Fitur Tambah Data
+
+Menambahkan tombol:
+
+```html
+<button @click="tambah">
+    Tambah Data
+</button>
+```
+
+Kemudian membuat modal form untuk mengisi:
+
+- Judul
+- Isi Artikel
+- Status
+
+---
+
+### 5. Membuat Fitur Edit Data
+
+Fungsi edit:
+
+```javascript
+edit(data)
+```
+
+Fungsi ini digunakan untuk menampilkan data yang dipilih ke dalam form kemudian menyimpan perubahan menggunakan:
+
+```javascript
+axios.put()
+```
+
+---
+
+### 6. Membuat Fitur Hapus Data
+
+Fungsi hapus:
+
+```javascript
+hapus(index,id)
+```
+
+Menghapus data menggunakan:
+
+```javascript
+axios.delete()
+```
+
+---
+
+### 7. Membuat CSS Tampilan
+
+Menambahkan style untuk:
+
+- Tabel artikel
+- Tombol
+- Modal form
+- Input dan textarea
+- Tampilan popup tambah dan edit data
+
+---
+
+## Hasil Praktikum
+
+Pada praktikum ini berhasil dibuat aplikasi frontend menggunakan VueJS yang terhubung dengan REST API CodeIgniter 4. Aplikasi mampu:
+
+- Menampilkan data artikel.
+- Menambahkan data artikel.
+- Mengubah data artikel.
+- Menghapus data artikel.
+- Menampilkan form secara dinamis tanpa reload halaman.
+
+## Screenshot Praktikum
+
+### Menampilkan Data Artikel
+![Data Artikel](Screenshoots-praktikum-11/hasil.png)
+
+### Tambah Data Artikel
+![Tambah Data](Screenshoots-praktikum-11/tambahdata.png)
+
+
+## Kesimpulan
+
+Praktikum ini berhasil mengimplementasikan framework VueJS sebagai frontend yang terintegrasi dengan REST API CodeIgniter 4 menggunakan Axios. Dengan VueJS, proses CRUD dapat dilakukan secara dinamis tanpa melakukan reload halaman sehingga aplikasi menjadi lebih interaktif dan responsif.
+
+
+# Praktikum	12:	VueJS	Komponen	dan	Routing	(Single	Page	
+Application)
+
+# Deskripsi Praktikum
+Pada praktikum ini dilakukan pengembangan aplikasi VueJS menjadi Single Page Application (SPA) menggunakan Vue Router. Dengan konsep SPA, perpindahan halaman dapat dilakukan tanpa me-reload browser sehingga aplikasi menjadi lebih cepat dan interaktif.
+
+Pada praktikum ini dibuat beberapa halaman, yaitu Beranda, Kelola Artikel, dan About yang saling terhubung menggunakan Vue Router.
+
+## Tujuan Praktikum
+
+1. Memahami konsep Single Page Application (SPA).
+2. Memahami penggunaan Vue Router pada VueJS.
+3. Membuat navigasi halaman tanpa reload browser.
+4. Membuat komponen halaman menggunakan VueJS.
+
+## Tools yang Digunakan
+- Visual Studio Code
+- VueJS 3
+- Vue Router 4
+- Axios
+- Google Chrome
+- XAMPP
+
+### 1. Menambahkan Library Vue Router
+
+![Vue Router](Screenshoots-praktikum-12/vuerouter.png)
+
+### 2. Membuat Komponen Home
+
+Membuat file baru bernama Home.js untuk menampilkan halaman beranda/selamat datang.
+
+![Komponen Home](Screenshoots-praktikum-12/homejs.png)
+
+### 3. Membuat Komponen Artikel
+Komponen ini digunakan untuk mengelola data artikel yang terhubung dengan REST API.
+
+![Komponen Artikel1](Screenshoots-praktikum-12/artikeljs1.png)
+
+![Komponen Artikel2](Screenshoots-praktikum-12/artikeljs2.png)
+
+### 4. Membuat Komponen About
+Halaman About berisi:
+
+- Nama
+- NIM
+- Kelas
+- Mata Kuliah
+- Foto Profil
+
+![Komponen About](Screenshoots-praktikum-12/komponen-about.png)
+
+### 5. Membuat Routing
+
+Pada file:
+
+```text
+assets/js/app.js
+```
+
+Menambahkan route:
+
+```javascript
+const routes = [
+{
+path: '/',
+component: Home
+},
+{
+path: '/artikel',
+component: Artikel
+},
+{
+path: '/about',
+component: About
+}
+]
+
+### 6. Membuat Menu Navigasi
+
+```html
+<nav>
+<router-link to="/">Beranda</router-link>
+<router-link to="/artikel">Kelola Artikel</router-link>
+<router-link to="/about">About</router-link>
+</nav>
+```
+
+## Hasil Praktikum
+
+Pada praktikum ini berhasil dibuat aplikasi Single Page Application (SPA) menggunakan VueJS dan Vue Router. Pengguna dapat berpindah halaman antara Beranda, Kelola Artikel, dan About tanpa melakukan reload browser.
+
+## Screenshot Praktikum
+
+### Tampilan Beranda
+![Beranda](Screenshoots-praktikum-12/Beranda.png)
+
+### Halaman Kelola Artikel
+![Kelola Artikel](Screenshoots-praktikum-12/kelola-artikel.png)
+
+### Halaman About
+![About](Screenshoots-praktikum-12/tampilan-about.png)
+
+## Kesimpulan
+
+Pada praktikum ini berhasil diterapkan konsep Single Page Application (SPA) menggunakan VueJS dan Vue Router. Dengan menggunakan router, proses perpindahan halaman menjadi lebih cepat karena browser tidak perlu melakukan reload halaman. Selain itu, aplikasi menjadi lebih interaktif dan mudah dikembangkan dengan pendekatan component-based architecture.
