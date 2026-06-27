@@ -1,0 +1,85 @@
+CRITICAL - 2026-04-07 15:43:55 --> ErrorException: Cannot redeclare Config\Routing::$autoRoute
+[Method: CLI, Route: serve]
+in APPPATH\Config\Routing.php on line 96.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-07 16:17:51 --> ParseError: syntax error, unexpected token "public", expecting end of file
+[Method: GET, Route: page/tos]
+in APPPATH\Controllers\Page.php on line 18.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp3\\htdocs\\lab11_ci\\ci4\\app\\Controllers\\Page.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Page')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Page')
+ 4 SYSTEMPATH\Router\AutoRouterImproved.php(174): class_exists('\\App\\Controllers\\Page')
+ 5 SYSTEMPATH\Router\AutoRouterImproved.php(282): CodeIgniter\Router\AutoRouterImproved->searchFirstController()
+ 6 SYSTEMPATH\Router\Router.php(594): CodeIgniter\Router\AutoRouterImproved->getRoute('page/tos', 'get')
+ 7 SYSTEMPATH\Router\Router.php(245): CodeIgniter\Router\Router->autoRoute('page/tos')
+ 8 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('page/tos')
+ 9 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp3\\htdocs\\lab11_ci\\ci4\\public\\index.php')
+CRITICAL - 2026-04-07 16:21:28 --> ParseError: syntax error, unexpected token "public", expecting end of file
+[Method: GET, Route: page/tos]
+in APPPATH\Controllers\Page.php on line 18.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp3\\htdocs\\lab11_ci\\ci4\\app\\Controllers\\Page.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Page')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Page')
+ 4 SYSTEMPATH\Router\AutoRouterImproved.php(174): class_exists('\\App\\Controllers\\Page')
+ 5 SYSTEMPATH\Router\AutoRouterImproved.php(282): CodeIgniter\Router\AutoRouterImproved->searchFirstController()
+ 6 SYSTEMPATH\Router\Router.php(594): CodeIgniter\Router\AutoRouterImproved->getRoute('page/tos', 'get')
+ 7 SYSTEMPATH\Router\Router.php(245): CodeIgniter\Router\Router->autoRoute('page/tos')
+ 8 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('page/tos')
+ 9 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp3\\htdocs\\lab11_ci\\ci4\\public\\index.php')
+CRITICAL - 2026-04-07 16:24:50 --> ParseError: syntax error, unexpected token "public", expecting end of file
+[Method: GET, Route: page/tos]
+in APPPATH\Controllers\Page.php on line 18.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp3\\htdocs\\lab11_ci\\ci4\\app\\Controllers\\Page.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Page')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Page')
+ 4 SYSTEMPATH\Router\AutoRouterImproved.php(174): class_exists('\\App\\Controllers\\Page')
+ 5 SYSTEMPATH\Router\AutoRouterImproved.php(282): CodeIgniter\Router\AutoRouterImproved->searchFirstController()
+ 6 SYSTEMPATH\Router\Router.php(594): CodeIgniter\Router\AutoRouterImproved->getRoute('page/tos', 'get')
+ 7 SYSTEMPATH\Router\Router.php(245): CodeIgniter\Router\Router->autoRoute('page/tos')
+ 8 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('page/tos')
+ 9 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp3\\htdocs\\lab11_ci\\ci4\\public\\index.php')
+CRITICAL - 2026-04-07 16:25:36 --> ParseError: syntax error, unexpected token "public", expecting end of file
+[Method: GET, Route: page/tos]
+in APPPATH\Controllers\Page.php on line 18.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp3\\htdocs\\lab11_ci\\ci4\\app\\Controllers\\Page.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Page')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Page')
+ 4 SYSTEMPATH\Router\AutoRouterImproved.php(174): class_exists('\\App\\Controllers\\Page')
+ 5 SYSTEMPATH\Router\AutoRouterImproved.php(282): CodeIgniter\Router\AutoRouterImproved->searchFirstController()
+ 6 SYSTEMPATH\Router\Router.php(594): CodeIgniter\Router\AutoRouterImproved->getRoute('page/tos', 'get')
+ 7 SYSTEMPATH\Router\Router.php(245): CodeIgniter\Router\Router->autoRoute('page/tos')
+ 8 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('page/tos')
+ 9 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp3\\htdocs\\lab11_ci\\ci4\\public\\index.php')
+CRITICAL - 2026-04-07 18:50:42 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "tos.php"
+[Method: GET, Route: page/tos]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('tos.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('tos', [], true)
+ 3 APPPATH\Controllers\Page.php(30): view('tos', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Page->tos()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp3\\htdocs\\lab11_ci\\ci4\\public\\index.php')
