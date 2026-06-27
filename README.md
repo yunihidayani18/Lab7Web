@@ -431,11 +431,11 @@ $routes->get('/user/login', 'User::login');
 $routes->post('/user/login', 'User::login');
 $routes->get('/user/logout', 'User::logout');
 
-<<<<<<< HEAD
+
 # Praktikum 5 – Pagination dan Pencarian
 =======
 ### Praktikum 5 - Pagination dan Pencarian
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
+
 Tujuan
 1. Mahasiswa mampu memahami konsep dasar Pagination.
 2. Mahasiswa mampu memahami konsep dasar Pencarian.
@@ -449,46 +449,33 @@ Langkah Praktikum
 Pagination digunakan agar data artikel tidak tampil sekaligus dalam satu halaman. Pada praktikum ini digunakan method:
 $model->paginate(10);
 Artinya setiap halaman menampilkan maksimal 10 data artikel.
-<<<<<<< HEAD
+
 ![Membuat Pagination](Screenshots-praktikum-5/code1.png)
 
-=======
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
 2. Menambahkan Pager
 Untuk menampilkan navigasi halaman digunakan:
 <?= $pager->links(); ?>
 Dengan fitur ini pengguna dapat berpindah halaman data artikel.
 
-<<<<<<< HEAD
 Berikut hasilnya :
 ![Pagination](Screenshots-praktikum-5/praktikum5.png)
 
 3. Membuat Form Pencarian
 Pada halaman admin artikel ditambahkan form pencarian menggunakan input keyword.
 Form pencarian:
-![Membuat Pencarian](Screenshots-praktikum-5/code2.png)
-=======
-3. Membuat Form Pencarian
-Pada halaman admin artikel ditambahkan form pencarian menggunakan input keyword.
-Contoh form pencarian:
 
-<form method="get">
-    <input type="text" name="q">
-    <input type="submit" value="Cari">
-</form>
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
+![Membuat Pencarian](Screenshots-praktikum-5/code2.png)
+
 
 4. Menambahkan Query Pencarian
 Pencarian dilakukan menggunakan Query Builder CodeIgniter 4 dengan method like().
 $model->like('judul', $q)->paginate(10);
 Query tersebut digunakan untuk mencari artikel berdasarkan judul.
 
-<<<<<<< HEAD
 Berikut hasilnya :
 ![Pencarian](Screenshots-praktikum-5/tambah-pencarian.png)
 
-=======
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
+
 Kesimpulan :
 Pada praktikum ini berhasil diterapkan fitur pagination dan pencarian data menggunakan CodeIgniter 4. Dengan adanya pagination, tampilan data menjadi lebih terstruktur dan ringan. Sedangkan fitur pencarian membantu pengguna menemukan artikel dengan lebih cepat dan efisien.
 
@@ -521,7 +508,7 @@ CREATE TABLE kategori (
     PRIMARY KEY (id_kategori)
 );
 
-<<<<<<< HEAD
+
 ![Tabel kategori](Screenshots-praktikum-6/membuat-kategori.png)
 
 
@@ -534,7 +521,7 @@ Menambahkan kolom id_kategori pada tabel artikel dan menghubungkannya dengan tab
 Menambahkan method JOIN pada ArtikelModel.php.
 
 ![Modifikasi Model](Screenshots-praktikum-6/Modifikasi-model-artikel.png)
-=======
+
 2. Menambahkan Foreign Key
 Menambahkan kolom id_kategori pada tabel artikel dan menghubungkannya dengan tabel kategori.
 
@@ -549,27 +536,23 @@ public function getArtikel()
         ->get()
         ->getResultArray();
 }
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
+
 
 4. Modifikasi Controller
 Mengubah controller agar menggunakan method getArtikel() sehingga data kategori ikut ditampilkan.
 
-<<<<<<< HEAD
 ![Modifikasi Controller](Screenshots-praktikum-6/Modifikasi-Modifikasi-controller-artikel.png)
 
-=======
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
+
 5. Modifikasi View
 Menambahkan kolom kategori pada halaman admin dan halaman artikel.
 Contoh tampilan:
 Artikel Pertama
 Kategori: Teknologi
 
-<<<<<<< HEAD
-![Modifikasi View](Screenshots-praktikum-6/Modifikasi-Modifikasi-view.png)
+![Modifikasi View](Screenshots-praktikum-6/Modifikasi-view.png)
 
-=======
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
+
 6. Menambahkan Dropdown Kategori
 Pada form tambah dan edit artikel ditambahkan dropdown kategori agar pengguna dapat memilih kategori artikel secara langsung.
 
@@ -580,22 +563,23 @@ Query JOIN berhasil dijalankan.
 Data kategori dapat ditampilkan pada halaman admin dan halaman artikel.
 Form tambah dan edit artikel berhasil menggunakan dropdown kategori.
 
-<<<<<<< HEAD
 Berikut gambarnya :
 ![Tabel Kategori](Screenshots-praktikum-6/Modifikasi-tabel-kategori.png)
 ![Kategori](Screenshots-praktikum-6/Modifikasi-kategori.png)
 
-=======
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
+
 ### Kesimpulan
 Pada praktikum ini berhasil diterapkan relasi tabel menggunakan foreign key dan Query Builder JOIN pada CodeIgniter 4. Dengan adanya relasi tersebut, data artikel dan kategori dapat saling terhubung sehingga pengelolaan data menjadi lebih terstruktur dan efisien.
 
 # Praktikum 7 — Upload File Gambar
+
 ### Deskripsi Praktikum
 Pada praktikum ini dilakukan implementasi upload file gambar pada aplikasi portal berita menggunakan framework CodeIgniter 4. Fitur upload digunakan untuk menambahkan gambar pada setiap artikel yang dibuat sehingga tampilan artikel menjadi lebih menarik dan informatif.
+
 ### Tujuan
 1. Mahasiswa mampu memahami konsep dasar File Upload.
 2. Mahasaswa mampu membuat File Upload menggunakan Framework Codeigniter 4.
+
 ### Langkah Praktikum
 1. Menambahkan Kolom Gambar pada Database
 Menambahkan kolom gambar pada tabel artikel untuk menyimpan nama file gambar.
@@ -611,17 +595,13 @@ $file->move(ROOTPATH . 'public/gambar');
 
 Kode penyimpanan nama file:
 'gambar' => $file->getName(),
-<<<<<<< HEAD
-   
-3. Menambahkan Input File
-=======
 
 3. Modifikasi Form Tambah Artikel
 Menambahkan atribut enctype pada tag form agar dapat mengirim file upload.
 <form action="" method="post" enctype="multipart/form-data">
    
 4. Menambahkan Input File
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
+
 Menambahkan field input file pada form tambah artikel.
 <p>
     <input type="file" name="gambar">
@@ -639,15 +619,14 @@ File gambar berhasil diupload ke folder public/gambar.
 Nama file gambar berhasil disimpan ke database.
 Artikel dapat memiliki gambar sesuai upload pengguna.
 
-<<<<<<< HEAD
 ![Upload Gambar Berhasil](Screenshots-praktikum-7/Modifikasi-berhasil.png)
 
-=======
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
+
 ### Kesimpulan
 Pada praktikum ini berhasil diterapkan fitur upload file gambar menggunakan CodeIgniter 4. Dengan adanya fitur upload gambar, artikel menjadi lebih menarik dan pengelolaan media pada website dapat dilakukan dengan lebih baik.
 
 # Praktikum 8: AJAX
+
 ### Deskripsi Praktikum
 Pada praktikum ini dilakukan implementasi AJAX pada aplikasi portal berita menggunakan framework CodeIgniter 4 dan jQuery. AJAX digunakan untuk mengambil data artikel dari server tanpa melakukan reload halaman sehingga proses menampilkan data menjadi lebih cepat dan interaktif.
 
@@ -686,14 +665,13 @@ $routes->get('/ajax/getData', 'AjaxController::getData');
 Membuat file view:
 app/Views/ajax/index.php
 View digunakan untuk menampilkan tabel artikel yang datanya diambil menggunakan AJAX.
-<<<<<<< HEAD
+
 
 ![View Ajax](Screenshots-praktikum-8/view-index1.png)
 ![View Ajax](Screenshots-praktikum-8/view-index2.png)
 ![View Ajax](Screenshots-praktikum-8/view-index3.png)
 
-=======
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
+
 5. Membuat AJAX Request
 Menggunakan jQuery AJAX untuk mengambil data artikel dari server.
 Contoh kode:
@@ -721,19 +699,70 @@ Hasil dari praktikum ini yaitu:
 * JSON response berhasil diproses menggunakan jQuery.
 * Halaman menjadi lebih interaktif dan dinamis.
 
-<<<<<<< HEAD
 Berikut tampilannya :
 
 ![Ajax](Screenshots-praktikum-8/BERHASIL.png)
 
-=======
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
+
 ### Kesimpulan
 Pada praktikum ini berhasil diterapkan AJAX menggunakan jQuery dan CodeIgniter 4. Dengan AJAX, proses pengambilan data dapat dilakukan tanpa reload halaman sehingga aplikasi menjadi lebih cepat dan responsif.
 
+# Praktikum 9: Implementasi AJAX Pagination dan Search
+
+## Deskripsi Praktikum
+Pada praktikum ini dilakukan implementasi AJAX pada aplikasi portal berita menggunakan framework CodeIgniter 4 dan jQuery. Fitur AJAX digunakan untuk melakukan pencarian (search) dan pagination tanpa melakukan reload halaman, sehingga data dapat ditampilkan secara lebih cepat dan interaktif.
+
+## Tujuan Praktikum
+
+1. Memahami konsep AJAX pada CodeIgniter 4.
+2. Mengimplementasikan fitur pencarian data secara realtime.
+3. Mengimplementasikan pagination menggunakan AJAX.
+4. Membuat aplikasi menjadi lebih responsif dan interaktif.
 
 
-<<<<<<< HEAD
+## Fitur yang Dibuat
 
-=======
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
+### 1. AJAX Search
+Fitur pencarian artikel dilakukan tanpa reload halaman. Data yang ditampilkan akan berubah sesuai kata kunci yang dimasukkan pengguna.
+
+### 2. AJAX Pagination
+Perpindahan halaman data artikel dilakukan secara asynchronous sehingga halaman tidak perlu dimuat ulang.
+
+## Langkah Praktikum
+
+### 1. Persiapan
+- Menjalankan MySQL Server.
+- Membuka database `lab_ci4`.
+- Memastikan tabel `artikel` dan `kategori` sudah tersedia.
+- Menambahkan library jQuery.
+
+### 2. Modifikasi Controller Artikel
+Method `admin_index()` dimodifikasi agar dapat mengembalikan data dalam format JSON ketika request berasal dari AJAX.
+
+![Modifikasi Artikel](Screenshots-praktikum-9/modifcontrollartikel.png)
+
+### 3. Modifikasi View
+View `admin_index.php` diubah dengan menambahkan:
+
+- Form pencarian.
+- Filter kategori.
+- Container data artikel.
+- Container pagination.
+- Script AJAX menggunakan jQuery.
+
+## Screenshot Hasil Praktikum
+
+### Halaman Data Artikel
+![Data Artikel](Screenshoots-praktikum-9/hasil.png)
+
+### Pencarian Artikel
+![Search Artikel](Screenshoots-praktikum-9/pencarianjudul.png)
+
+## Hasil Praktikum
+
+Pada praktikum ini berhasil diterapkan AJAX menggunakan jQuery dan CodeIgniter 4. Dengan AJAX, proses pencarian dan pagination dapat dilakukan tanpa reload halaman sehingga aplikasi menjadi lebih cepat, responsif, dan memberikan pengalaman pengguna yang lebih baik.
+
+
+## Kesimpulan
+
+Implementasi AJAX Pagination dan Search berhasil dilakukan menggunakan CodeIgniter 4 dan jQuery. Penggunaan AJAX mampu meningkatkan performa aplikasi serta mempermudah pengguna dalam melakukan pencarian dan perpindahan halaman data artikel secara dinamis.
