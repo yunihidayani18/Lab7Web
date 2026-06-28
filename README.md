@@ -1,13 +1,10 @@
-<<<<<<< HEAD
+
 
 * Nama  : YUNI HIDAYANI
 * NIM   : 311910078
 * Kelas : 1243B/B311FT-FH
 =======
-* Nama: Yuni Hidayani
-* NIM: 311910078
-* Kelas: 1243B
->>>>>>> 036aad151cce3749c574730a9d9123391879b838
+
 
 Praktikum 1 - PHP Framework CodeIgniter 4
 
@@ -434,7 +431,6 @@ $routes->get('/user/logout', 'User::logout');
 
 # Praktikum 5 – Pagination dan Pencarian
 =======
-### Praktikum 5 - Pagination dan Pencarian
 
 Tujuan
 1. Mahasiswa mampu memahami konsep dasar Pagination.
@@ -522,12 +518,6 @@ Menambahkan method JOIN pada ArtikelModel.php.
 
 ![Modifikasi Model](Screenshots-praktikum-6/Modifikasi-model-artikel.png)
 
-2. Menambahkan Foreign Key
-Menambahkan kolom id_kategori pada tabel artikel dan menghubungkannya dengan tabel kategori.
-
-3. Modifikasi Model
-Menambahkan method JOIN pada ArtikelModel.php.
-
 public function getArtikel()
 {
     return $this->db->table('artikel')
@@ -611,7 +601,7 @@ Menambahkan field input file pada form tambah artikel.
     <input type="file" name="gambar">
 </p>
 
-4. Membuat Folder Upload
+5. Membuat Folder Upload
 Membuat folder:
 public/gambar
 Folder ini digunakan untuk menyimpan file gambar yang diupload.
@@ -665,6 +655,7 @@ app/Config/Routes.php
 Kode route:
 $routes->get('/ajax', 'AjaxController::index');
 $routes->get('/ajax/getData', 'AjaxController::getData');
+
 4. Membuat View AJAX
 Membuat file view:
 app/Views/ajax/index.php
@@ -695,6 +686,7 @@ $.ajax({
     }
 
 });
+
 6. Menampilkan Data ke Tabel
 Data JSON yang diterima kemudian ditampilkan ke dalam tabel HTML menggunakan JavaScript dan jQuery.
 
@@ -1264,3 +1256,131 @@ Akses Ditolak! Anda harus login terlebih dahulu.
 
 Pada praktikum ini berhasil diterapkan sistem autentikasi sederhana pada aplikasi Single Page Application menggunakan Vue.js. Dengan memanfaatkan localStorage dan Vue Router Navigation Guards, halaman tertentu dapat dibatasi sehingga hanya dapat diakses oleh pengguna yang telah melakukan login. Fitur login dan logout juga berhasil diimplementasikan untuk mengelola sesi pengguna pada aplikasi.
 
+# Praktikum 14 : Keamanan API, Autentikasi Token, dan Axios Interceptors
+
+## Tujuan Praktikum
+- Memahami konsep keamanan RESTful API menggunakan Token-Based Authentication.
+- Mengimplementasikan Filter pada CodeIgniter 4 untuk mengamankan endpoint API.
+- Mengimplementasikan Axios Interceptors pada aplikasi VueJS.
+- Melakukan pengujian komunikasi data yang aman antara Frontend dan Backend.
+
+## Dasar Teori
+
+Pada praktikum sebelumnya, keamanan aplikasi hanya diterapkan pada sisi client menggunakan Vue Router Navigation Guards. Namun, keamanan tersebut belum cukup karena endpoint API masih dapat diakses secara langsung menggunakan aplikasi seperti Postman.
+
+Untuk mengatasi hal tersebut, digunakan Token-Based Authentication. Setelah pengguna berhasil login, server akan memberikan token yang disimpan pada browser (localStorage). Token tersebut kemudian dikirim pada setiap request melalui HTTP Header:
+
+Authorization: Bearer <token>
+
+Untuk mempermudah pengiriman token secara otomatis pada setiap request, digunakan Axios Interceptors.
+
+## Langkah-langkah Praktikum
+1. Membuat ApiAuthFilter
+
+Membuat file:
+
+app/Filters/ApiAuthFilter.php
+
+Filter ini digunakan untuk memeriksa apakah request yang masuk membawa token pada header Authorization. Jika token tidak ditemukan, maka server akan mengembalikan response:
+
+{
+    "status": 401,
+    "error": 401,
+    "messages": "Akses Ditolak. Token tidak ditemukan pada request!"
+}
+
+![Membuat API AuthFilter](Screenshots-praktikum-14/apiauthfilter.png)
+
+2. Mendaftarkan Filter
+
+Membuka file:
+
+app/Config/Filters.php
+
+Kemudian menambahkan kode berikut:
+
+'apiauth' => \App\Filters\ApiAuthFilter::class,
+
+![Filter API](Screenshots-praktikum-14/filter-api.png)
+
+3. Menerapkan Filter pada Route API
+
+Membuka file:
+
+app/Config/Routes.php
+
+Kemudian mengamankan endpoint POST, PUT, dan DELETE:
+
+![Route API](Screenshots-praktikum-14/routes.png)
+
+4. Menambahkan Axios Interceptors
+
+Membuka file:
+
+assets/js/app.js
+
+Kemudian menambahkan Axios Interceptors agar token dikirim secara otomatis pada setiap request.
+
+Fungsi interceptor:
+- Mengambil token dari localStorage.
+- Menambahkan token ke Header Authorization.
+- Mengarahkan pengguna kembali ke halaman login jika token tidak valid.
+
+![Axios Interceptors](Screenshots-praktikum-14/Interceptors.png)
+
+## Pengujian Sistem
+1. Pengujian API Tanpa Token
+
+Pengujian dilakukan menggunakan aplikasi Postman dengan mengirim request:
+
+POST
+http://localhost:8080/post
+
+Tanpa menyertakan Authorization Header.
+
+Hasil pengujian menunjukkan bahwa server menolak request dan mengembalikan response:
+
+![Pengujian Post](Screenshots-praktikum-14/pengujian1.png)
+
+2. Pengujian Axios Interceptors
+
+Pengujian dilakukan dengan membuka Developer Tools pada browser (F12), kemudian memilih tab Network dan melakukan proses Tambah, Ubah, atau Hapus data artikel.
+
+Hasil pengujian menunjukkan bahwa Axios berhasil mengirimkan:
+
+Authorization: Bearer <token>
+
+secara otomatis pada setiap request ke server.
+
+![Pengujian Interceptors](Screenshots-praktikum-14/interceptor-bekerja.png)
+
+3. Pengujian Manipulasi Data Artikel
+### Tambah Data Artikel
+
+Data artikel berhasil ditambahkan setelah pengguna login.
+
+![Tambah Data](Screenshots-praktikum-14/test-tambahdata.png)
+
+![Tambah Data Berhasil](Screenshots-praktikum-14/tambahdata-berhasil.png)
+
+### Ubah Data Artikel
+Data artikel berhasil diperbarui.
+
+![Ubah Data](Screenshots-praktikum-14/test-editdata.png)
+
+![Ubah Data Berhasil](Screenshots-praktikum-14/editdata-berhasil.png)
+
+### Hapus Data Artikel
+Data artikel berhasil dihapus.
+
+![Hapus Data](Screenshots-praktikum-14/test-hapusdata.png)
+
+![Hapus Data Berhasil](Screenshots-praktikum-14/hapusdata-berhasil.png)
+
+## Kesimpulan
+
+Kesimpulan dari praktikum ini adalah Vue Router Navigation Guards dan CodeIgniter Filters memiliki fungsi keamanan yang berbeda. Vue Router Navigation Guards bekerja di sisi klien (client-side) untuk mengatur navigasi halaman dan mencegah pengguna yang belum login mengakses halaman tertentu. Namun, keamanan ini masih dapat dilewati apabila seseorang langsung mengakses endpoint API menggunakan aplikasi seperti Postman.
+
+Sedangkan CodeIgniter Filters bekerja di sisi server (server-side) dengan memeriksa setiap request yang masuk ke API. Filter dapat memvalidasi keberadaan token pada header Authorization sebelum request diproses. Dengan demikian, meskipun seseorang mencoba mengakses endpoint secara langsung melalui Postman, server tetap dapat menolak akses yang tidak memiliki token yang valid dengan memberikan respon HTTP 401 Unauthorized.
+
+Oleh karena itu, keamanan aplikasi yang baik harus menggabungkan kedua mekanisme tersebut, yaitu keamanan pada sisi klien menggunakan Vue Router Navigation Guards dan keamanan pada sisi server menggunakan CodeIgniter Filters.

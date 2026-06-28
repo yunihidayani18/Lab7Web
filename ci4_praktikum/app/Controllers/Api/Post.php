@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Api;
 
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
@@ -21,26 +21,33 @@ class Post extends ResourceController
 
     // tambah data
     public function create()
-    {
-        $model = new ArtikelModel();
+{
+    $model = new \App\Models\ArtikelModel();
 
-        $data = [
-            'judul' => $this->request->getVar('judul'),
-            'isi'   => $this->request->getVar('isi'),
-        ];
+    $json = $this->request->getJSON(true);
 
+    $data = [
+        'judul'  => $json['judul'] ?? '',
+        'isi'    => $json['isi'] ?? '',
+        'status' => $json['status'] ?? 0,
+        'slug'   => url_title($json['judul'] ?? '', '-', true),
+        'gambar' => 'default.jpg',
+        'id_kategori' => null
+    ];
+
+    try {
         $model->insert($data);
 
-        $response = [
+        return $this->respondCreated([
             'status' => 201,
-            'error' => null,
-            'messages' => [
-                'success' => 'Data artikel berhasil ditambahkan.'
-            ]
-        ];
-
-        return $this->respondCreated($response);
+            'message' => 'Data berhasil ditambahkan'
+        ]);
+    } catch (\Exception $e) {
+        return $this->respond([
+            'error' => $e->getMessage()
+        ], 500);
     }
+}
 
     // tampil satu data
     public function show($id = null)
@@ -61,10 +68,13 @@ class Post extends ResourceController
 {
     $model = new ArtikelModel();
 
-    $data = [
-        'judul' => $this->request->getVar('judul'),
-        'isi'   => $this->request->getVar('isi'),
-    ];
+   $dataJson = $this->request->getJSON(true);
+
+$data = [
+    'judul'  => $dataJson['judul'],
+    'isi'    => $dataJson['isi'],
+    'status' => $dataJson['status']
+];
 
     $model->update($id, $data);
 

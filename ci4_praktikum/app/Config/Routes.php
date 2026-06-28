@@ -5,6 +5,10 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+$routes->options('(:any)', static function () {
+    return service('response');
+});
+
 $routes->get('/', 'Home::index');
 
 $routes->get('/about', 'Page::about');
@@ -35,9 +39,16 @@ $routes->get('/ajax', 'AjaxController::index');
 $routes->get('/ajax/getData', 'AjaxController::getData');
 $routes->delete('/ajax/delete/(:num)', 'AjaxController::delete/$1');
 
-$routes->resource('post');
+
 $routes->post('api/login', 'Api\Auth::login');
 $routes->options('api/login', static function () {
     return response()->setStatusCode(200);
 });
 
+$routes->post('post', 'Api\Post::create', ['filter' => 'apiauth']);
+$routes->get('post', 'Api\Post::index');
+$routes->get('post/(:num)', 'Api\Post::show/$1');
+
+$routes->post('post', 'Api\Post::create', ['filter' => 'apiauth']);
+$routes->put('post/(:segment)', 'Api\Post::update/$1', ['filter' => 'apiauth']);
+$routes->delete('post/(:segment)', 'Api\Post::delete/$1', ['filter' => 'apiauth']);
